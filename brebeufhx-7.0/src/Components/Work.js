@@ -2,11 +2,12 @@ import React from "react";
 import PickMeals from "../Assets/pick-meals-image.png";
 import ChooseMeals from "../Assets/choose-image.png";
 import DeliveryMeals from "../Assets/delivery-image.png";
+import pencil3 from "../Assets/pencil3.png";
 
 const Work = () => {
   const workInfoData = [
     {
-      image: PickMeals,
+      image: pencil3,
       title: "Input info",
       text: "Input some general info about your education and work experience",
     },
