@@ -12,7 +12,7 @@ user_input = {
 }
 
 # Define LLM Prompt
-prompt = f"You are a skilled resume technician aiming to maximimise the chances of a person getting hired as {user_input["job title"]} by creating the perfect resume for the job of {user_input["job title"]}. Make sure to not include any of your personal comments in your response. Your response will be dfirectly used in the user's resume. DO NOT INCLUDE ADDITIONAL NOTES WHICH HAVE NOT BEEN REQUESTED. For example, do not include anything of the such: 'Note: Please make sure to proofread, format, and tailor this resume according to your specific needs and requirements.' Only provide the structure requested by the user. No notes section."
+prompt = f"You are a skilled resume technician aiming to maximimise the chances of a person getting hired as {user_input['job title']} by creating the perfect resume for the job of {user_input['job title']}. Make sure to not include any of your personal comments in your response. Your response will be dfirectly used in the user's resume. DO NOT INCLUDE ADDITIONAL NOTES WHICH HAVE NOT BEEN REQUESTED. For example, do not include anything of the such: 'Note: Please make sure to proofread, format, and tailor this resume according to your specific needs and requirements.' Only provide the structure requested by the user. No notes section."
 
 # Create a dump of user input to always send to the LLM
 user_input_dump = ""
@@ -37,7 +37,7 @@ def create_resume(user_input, choice_amount, choice_section, experience_response
                 model="gpt-3.5-turbo",
                 messages=[
                     {"role": "system", "content": prompt},
-                    {"role": "user", "content": f"Here is all the relevant information provided by the user which you will use to craft the perfect resume for him: {user_input_dump}.Create a short but realistic list of information containing the objective, the work experience section and the skills section that would be used to create a resume for the job title of {user_input["job title"]} and having the following experience: {user_input["experience"]}. Make sure to separate your response into these 3 parts: 'Objective', 'Work Experience' and 'Skills'."}
+                    {"role": "user", "content": f"Here is all the relevant information provided by the user which you will use to craft the perfect resume for him: {user_input_dump}.Create a short but realistic list of information containing the objective, the work experience section and the skills section that would be used to create a resume for the job title of {user_input['job title']} and having the following experience: {user_input['experience']}. Make sure to separate your response into these 3 parts: 'Objective', 'Work Experience' and 'Skills'."}
                     ]
                 )
             try:
@@ -74,7 +74,7 @@ def create_resume(user_input, choice_amount, choice_section, experience_response
                 model="gpt-3.5-turbo",
                 messages=[
                     {"role": "system", "content": prompt},
-                    {"role": "user", "content": f"Here is all the relevant information provided by the user which you will use to craft the perfect resume for him: {user_input_dump}. Compose a {experience_response_type} which effectively showcases the strong points that the user demonstrated in each of these job positions previously held by the user: {user_input["experience"]}. Take note that this is meant to be part of the work experience part of the user's resume. Format your response as such: Work Experience: name of job: detailed experience for that job in the form of a {experience_response_type}. DO NOT ADD A SUMMARY AT THE END OF YOUR RESPONSE."}
+                    {"role": "user", "content": f"Here is all the relevant information provided by the user which you will use to craft the perfect resume for him: {user_input_dump}. Compose a {experience_response_type} which effectively showcases the strong points that the user demonstrated in each of these job positions previously held by the user: {user_input['experience']}. Take note that this is meant to be part of the work experience part of the user's resume. Format your response as such: Work Experience: name of job: detailed experience for that job in the form of a {experience_response_type}. DO NOT ADD A SUMMARY AT THE END OF YOUR RESPONSE."}
                     ]
                 )
             print(resume_experience.choices[0].message.content)
@@ -84,5 +84,13 @@ def create_resume(user_input, choice_amount, choice_section, experience_response
             except:
                 pass
         return "ERROR"
+create_resume(user_input, 1, 1, "paragraph", user_input_dump) #
 
-# create_resume(user_input, 1, 1, "paragraph", user_input_dump)
+print(exported_summary)
+objective = exported_summary['resume_summary']
+resume = exported_summary["resume_experience"]
+skills = exported_summary['resume_skills']
+
+print(objective)
+print(resume)
+print(skills)
