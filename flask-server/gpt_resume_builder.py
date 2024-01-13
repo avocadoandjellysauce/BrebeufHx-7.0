@@ -85,29 +85,4 @@ def create_resume(user_input, choice_amount, choice_section, experience_response
                 pass
         return "ERROR"
 
-create_resume(user_input, 1, 1, "paragraph", user_input_dump)
-print(exported_summary["resume_summary"])
-print('\n')
-print(exported_summary["resume_experience"])
-print('\n')
-print(exported_summary["resume_skills"])
-
-print("\nPASS\n")
-
-create_resume(user_input, 1, 2, "paragraph", user_input_dump)
-print('\n')
-print(exported_summary["resume_summary"])
-print('\n')
-print(exported_summary["resume_experience"])
-print('\n')
-print(exported_summary["resume_skills"])
-
-print("\nPASS\n")
-
-create_resume(user_input, 1, 3, "paragraph", user_input_dump)
-print('\n')
-print(exported_summary["resume_summary"])
-print('\n')
-print(exported_summary["resume_experience"])
-print('\n')
-print(exported_summary["resume_skills"])
+# create_resume(user_input, 1, 1, "paragraph", user_input_dump)
