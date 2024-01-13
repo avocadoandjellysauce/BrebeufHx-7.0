@@ -1,5 +1,4 @@
 import React from "react";
-import PickMeals from "../Assets/pick-meals-image.png";
 import ChooseMeals from "../Assets/choose-image.png";
 import DeliveryMeals from "../Assets/delivery-image.png";
 import pencil3 from "../Assets/pencil3.png";

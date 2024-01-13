@@ -1,4 +1,6 @@
 import React from "react";
+import { useState, useEffect } from 'react'
+import App from '../App'
 
 const Maker = () => {
   const [value, setInputValue] = React.useState('');
@@ -18,7 +20,7 @@ const Maker = () => {
     // Call a function or perform actions with the experience values
     TextGenerate({value});
   };
-
+   const [showDiv, setShowDiv] = useState(false);
   return (
     <div className="contact-page-wrapper">
       <h1 className="primary-heading">CV Maker</h1>
@@ -59,7 +61,9 @@ const Maker = () => {
         <button className="secondary-button" onClick={handleFormSubmit}>Submit</button>
       </div>
       <br />      <br />      <br />
-      <button className="secondary-button" onClick={handleFormSubmit}>Submit All</button>
+      {/**  <button className="secondary-button">Submit All</button> */}
+      <br/><br/><br/><br/><br/>
+      
     </div>
   );
 };
