@@ -45,6 +45,10 @@ const Navbar = () => {
   const scrollToAbout = () => {
     const scrollAmount = 800; // Adjust this value based on how much you want to scroll down
     window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+  }
+  const scrollToMaker = () => {
+    const scrollAmount = 2600; // Adjust this value based on how much you want to scroll down
+    window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
   };
   return (
     <nav>
@@ -53,7 +57,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-links-container">
         <a href="">Home</a>
-        <a href="">CV Maker</a>
+        <a onClick={() => scrollToMaker('aboutSection')}>CV Maker </a>
         <a href="">Discussion</a>
         <a className="about-button" onClick={() => scrollToAbout('aboutSection')}>About</a>
         

@@ -1,14 +1,18 @@
 from dotenv import load_dotenv
 import openai
 
+# Load environment variables
+load_dotenv()
 
+# Load openai API
+client = openai.OpenAI()
 user_input = {
     "job title": "petroleum engineer",
     "experience": "Petro-Canada: Fuel inspector, Suncor: Peutroleum Engineer, Enbridge: Peutroleum Products Transportation Engineer"
 }
 
 # Define LLM Prompt
-
+prompt = f"You are a skilled resume technician aiming to maximimise the chances of a person getting hired as {user_input['job title']} by creating the perfect resume for the job of {user_input['job title']}. Make sure to not include any of your personal comments in your response. Your response will be dfirectly used in the user's resume. DO NOT INCLUDE ADDITIONAL NOTES WHICH HAVE NOT BEEN REQUESTED. For example, do not include anything of the such: 'Note: Please make sure to proofread, format, and tailor this resume according to your specific needs and requirements.' Only provide the structure requested by the user. No notes section."
 
 # Create a dump of user input to always send to the LLM
 user_input_dump = ""
@@ -25,12 +29,6 @@ exported_summary = {
 
 # Creates a resume for the user according to inputs to questions
 def create_resume(user_input, choice_amount, choice_section, experience_response_type, user_input_dump):
-    # Load environment variables
-    load_dotenv()
-
-    # Load openai API
-    client = openai.OpenAI()
-    prompt = f"You are a skilled resume technician aiming to maximimise the chances of a person getting hired as {user_input['job title']} by creating the perfect resume for the job of {user_input['job title']}. Make sure to not include any of your personal comments in your response. Your response will be dfirectly used in the user's resume. DO NOT INCLUDE ADDITIONAL NOTES WHICH HAVE NOT BEEN REQUESTED. For example, do not include anything of the such: 'Note: Please make sure to proofread, format, and tailor this resume according to your specific needs and requirements.' Only provide the structure requested by the user. No notes section."
 
     if choice_section == 1:
         # Feed all the data in & request full resume list
@@ -46,7 +44,7 @@ def create_resume(user_input, choice_amount, choice_section, experience_response
                 exported_summary["resume_summary"] = resume_all.choices[0].message.content.split("Objective:")[1].split("Work Experience:")[0]
                 exported_summary["resume_experience"] = resume_all.choices[0].message.content.split("Work Experience:")[1].split("Skills:")[0]
                 exported_summary["resume_skills"] = resume_all.choices[0].message.content.split("Work Experience:")[1].split("Skills:")[1]
-                return exported_summary
+                return
             except:
                 pass
         return "ERROR"
@@ -64,7 +62,7 @@ def create_resume(user_input, choice_amount, choice_section, experience_response
             print(resume_summary.choices[0].message.content)
             try:
                 exported_summary["resume_summary"] = resume_summary.choices[0].message.content.split("Objective:")[1]
-                return exported_summary
+                return
             except:
                 pass
         return "ERROR"
@@ -82,7 +80,7 @@ def create_resume(user_input, choice_amount, choice_section, experience_response
             print(resume_experience.choices[0].message.content)
             try:
                 exported_summary["resume_experience"] = resume_experience.choices[0].message.content.split("Work Experience:")[1]
-                return exported_summary
+                return
             except:
                 pass
         return "ERROR"

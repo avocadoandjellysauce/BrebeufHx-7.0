@@ -14,7 +14,7 @@ import React, { useState, useEffect } from 'react'
 function App() {
   const [data, setData] = useState([{}])
   useEffect(() => {
-    fetch ("/members").then(
+    fetch ("/create_resume").then(
       res => res.json()
     ).then(
       data => {

@@ -58,7 +58,8 @@ const Maker = () => {
         <input type="text" value={experience3} onChange={handleInputChange(setExperience3)} placeholder="Job Experience 3" />
         <button className="secondary-button" onClick={handleFormSubmit}>Submit</button>
       </div>
-      
+      <br />      <br />      <br />
+      <button className="secondary-button" onClick={handleFormSubmit}>Submit All</button>
     </div>
   );
 };

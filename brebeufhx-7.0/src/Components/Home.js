@@ -5,6 +5,10 @@ import Navbar from "./Navbar";
 import { FiArrowRight } from "react-icons/fi";
 
 const Home = () => {
+  const scrollToAbout = () => {
+    const scrollAmount = 2600; // Adjust this value based on how much you want to scroll down
+    window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+  };
   return (
     <div className="home-container">
       <Navbar />
@@ -20,7 +24,7 @@ const Home = () => {
             Leverage Generative AI to craft your personalized résumé. <br />
             Share and discuss your CV with others!
           </p>
-          <button className="secondary-button">
+          <button onClick={() => scrollToAbout('aboutSection')} className="secondary-button">
             Try it Now! <FiArrowRight />{" "}
           </button>
         </div>
